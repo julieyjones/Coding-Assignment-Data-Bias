@@ -1,32 +1,34 @@
 # Toxicity Assessment API Evaluation
 
+## Overview
+This project aims to evaluate the effectiveness of Google Jigsaw's Perspective API in assessing the toxicity of comments, especially when users purposefully circumvent language filters through word substitution. The evaluation includes both direct and indirect toxic statements, comparing the API's accuracy in different contexts.
+
 ## Hypothesis
-The hypothesis of this project is that the Perspective API, specifically designed for assessing the toxicity of comments, will be ineffective at evaluating comments in which users have intentionally circumvented language filters through word substitution.
+The hypothesis suggests that the API will be ineffective at assessing the toxicity of comments in which users have purposely circumvented language filters through word substitution.
 
 ## Method
-The methodology involves testing the API with sets of toxic and non-toxic statements, both in their original form and with substitutions replaced with the intended words. The goal is to analyze the API's accuracy in identifying toxicity in different linguistic contexts.
-
-## Code Overview
-The code utilizes the Google Perspective API (commentanalyzer) to assess toxicity scores for a set of statements. The statements include both direct and indirect toxic language, as well as non-toxic statements. The results are then analyzed to evaluate the accuracy of the API in different scenarios.
+To test the hypothesis, the following steps were taken:
+1. Creation of 10 toxic and 10 non-toxic statements with circumventive language.
+2. Replacement of circumventive language with the intended words to create a parallel set of statements.
+3. Utilization of Google Jigsaw's Perspective API to assess the toxicity of both sets of statements.
+4. Calculation of accuracy for direct toxic, direct non-toxic, indirect toxic, and indirect non-toxic statements.
 
 ## Results
-The evaluation indicates that the API's assessments for toxic statements are less accurate when circumventive language is used, while assessments for non-toxic statements are more accurate. The API seems to indiscriminately perceive indirect statements as less toxic overall, rather than accurately classifying them as toxic or non-toxic.
+The obtained results indicate:
+- Indirect Toxic Accuracy: 70%
+- Indirect Non-Toxic Accuracy: 90%
+- Direct Toxic Accuracy: 100%
+- Direct Non-Toxic Accuracy: 60%
 
-## Reflection
-The findings suggest that the API may lack the ability to consider context effectively, relying more on individual words to determine toxicity. The API's focus on specific words without considering their context could lead to false positives and negatives. The low accuracy in assessing direct non-toxic statements indicates a potential limitation in the API's contextual understanding.
+## Conclusion
+The results support the hypothesis, showing that the API's assessments were 30% less accurate for toxic statements when circumventive language was used. However, non-toxic statements were assessed 30% more accurately with circumventive language. The API seemed to indiscriminately perceive indirect statements as less toxic overall, lacking the ability to accurately flag them as toxic or non-toxic.
+
+The surprising finding was the API's lower accuracy (60%) in assessing direct non-toxic statements, possibly indicating a reliance on specific words rather than considering contextual nuances. The theory suggests that the API may struggle with context and might be easily fooled when users employ circumventive language that obscures profanity.
 
 ## Future Considerations
-The project raises questions about the feasibility of training machine learning algorithms to better understand human context and subtleties in language. Further exploration could involve investigating methods to enhance the API's ability to interpret context accurately.
+A key question for future exploration is whether it's possible to enhance the API's understanding of human context and subtle language nuances. Further research could investigate methods to teach the algorithm to recognize context, improving its accuracy in assessing the true toxicity of statements.
 
----
-
-**API Used:** Perspective API (commentanalyzer) by Google Jigsaw
-
-**Python Libraries:** googleapiclient
-
-**API Key:** Replace 'API_KEY' in the code with your valid API key for authentication.
-
----
-
-Feel free to explore the code and contribute to further discussions on the effectiveness of toxicity assessment in natural language processing.
-
+## Files
+- `toxicity_assessment.py`: Python script for conducting the evaluation.
+- `api_data_results.csv`: CSV file containing the results of the API assessments.
+- `README.md`: This file providing an overview of the project, the hypothesis, method, results, conclusion, and future considerations.
